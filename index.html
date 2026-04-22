@@ -452,6 +452,7 @@
             color: #D4AF7A;
             border: 2px solid #D4AF7A;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease;
         }
         .banner-footer {
             color: #5b6e8c;
@@ -488,7 +489,7 @@
 </head>
 <body>
 
-<!-- BANNER POPUP - Muncul pertama kali -->
+<!-- BANNER POPUP - Muncul setiap refresh dengan angka random -->
 <div id="bannerOverlay" class="banner-overlay">
     <div class="banner-popup">
         <button class="close-banner" id="closeBannerBtn">✕</button>
@@ -496,10 +497,10 @@
         <div class="banner-sub">Auto Counting</div>
         <div class="lottery-title">Lottery Prize</div>
         <div class="lottery-numbers">
-            <div class="number-ball">6</div>
-            <div class="number-ball">9</div>
-            <div class="number-ball">6</div>
-            <div class="number-ball">9</div>
+            <div class="number-ball">0</div>
+            <div class="number-ball">0</div>
+            <div class="number-ball">0</div>
+            <div class="number-ball">0</div>
         </div>
         <div class="banner-footer">PancerBet | Official Partner</div>
     </div>
@@ -556,41 +557,66 @@
 </div>
 
 <script>
-    // ========== BANNER POPUP (Muncul pertama kali) ==========
-    if (!sessionStorage.getItem('bannerClosed')) {
-        const bannerOverlay = document.getElementById('bannerOverlay');
-        if (bannerOverlay) {
-            bannerOverlay.classList.remove('hidden');
+    // ========== BANNER POPUP (Muncul SETIAP REFRESH, Angka Random) ==========
+    // Fungsi untuk generate angka random 0-9
+    function generateRandomNumbers() {
+        const numbers = [];
+        for (let i = 0; i < 4; i++) {
+            numbers.push(Math.floor(Math.random() * 10));
         }
-    } else {
-        const bannerOverlay = document.getElementById('bannerOverlay');
-        if (bannerOverlay) {
-            bannerOverlay.classList.add('hidden');
-        }
+        return numbers;
     }
 
+    // Fungsi untuk update angka di banner dengan animasi
+    function updateBannerNumbersWithAnimation() {
+        const randomNumbers = generateRandomNumbers();
+        const numberBalls = document.querySelectorAll('.number-ball');
+        if (numberBalls.length === 4) {
+            for (let i = 0; i < 4; i++) {
+                const ball = numberBalls[i];
+                ball.style.transform = 'scale(0.7)';
+                ball.style.transition = 'transform 0.15s ease';
+                setTimeout(() => {
+                    ball.textContent = randomNumbers[i];
+                    ball.style.transform = 'scale(1)';
+                }, 100);
+            }
+        }
+        return randomNumbers;
+    }
+
+    // Banner selalu muncul setiap refresh (tidak ada sessionStorage)
+    const bannerOverlay = document.getElementById('bannerOverlay');
+    if (bannerOverlay) {
+        bannerOverlay.classList.remove('hidden');
+        // Update angka random setiap kali banner muncul
+        updateBannerNumbersWithAnimation();
+    }
+
+    // Event untuk tombol Close (X) - hanya menutup, tidak menyimpan state
     const closeBannerBtn = document.getElementById('closeBannerBtn');
     if (closeBannerBtn) {
         closeBannerBtn.addEventListener('click', function() {
-            const bannerOverlay = document.getElementById('bannerOverlay');
-            bannerOverlay.classList.add('hidden');
-            sessionStorage.setItem('bannerClosed', 'true');
+            const bannerOverlayElem = document.getElementById('bannerOverlay');
+            if (bannerOverlayElem) {
+                bannerOverlayElem.classList.add('hidden');
+            }
         });
     }
 
+    // Klik di luar banner juga menutup
     const bannerOverlayElem = document.getElementById('bannerOverlay');
     if (bannerOverlayElem) {
         bannerOverlayElem.addEventListener('click', function(e) {
             if (e.target === bannerOverlayElem) {
                 bannerOverlayElem.classList.add('hidden');
-                sessionStorage.setItem('bannerClosed', 'true');
             }
         });
     }
     // ========================================================
 
     // ================= REDIRECT HEADER =================
-    const REDIRECT_URL = 'https://translate.google.com/?sl=zh-CN&tl=id&text=%E5%B7%B2%E7%BB%8F%E8%AF%BB%E8%BF%87%E4%BA%86%EF%BC%8C%E9%82%A3%E6%98%AF%E4%BD%A0%E7%9A%84%E7%8B%97&op=translate';
+    const REDIRECT_URL = 'https://translate.google.com/?sl=zh-CN&tl=id&text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%AC%A2%E8%BF%8E%E5%B0%8F%E7%8B%97&op=translate';
     const headerElement = document.getElementById('dashboardHeader');
     if (headerElement) {
         headerElement.style.cursor = 'pointer';
