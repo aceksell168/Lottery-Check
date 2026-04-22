@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title> 🎲 PANCERBET MEN 🎲</title>
+    <title> 💥PANCERBET MEN 💥</title>
     <style>
         * {
             margin: 0;
@@ -34,6 +34,12 @@
             box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .header:hover {
+            transform: translateY(-2px);
+            border-color: rgba(212,175,122,0.5);
         }
         .header::before {
             content: '';
@@ -342,6 +348,124 @@
             color: white;
         }
 
+        /* BANNER POPUP STYLE */
+        .banner-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 0s, opacity 0.3s ease;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        .banner-overlay.hidden {
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .banner-popup {
+            background: linear-gradient(145deg, #1a1a2e 0%, #0f0e17 100%);
+            border-radius: 48px;
+            padding: 40px 50px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 2px solid #D4AF7A;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
+            animation: slideDown 0.4s ease;
+            position: relative;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .close-banner {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: #D4AF7A;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #0f172a;
+            transition: all 0.2s;
+            border: none;
+        }
+        .close-banner:hover {
+            background: #ff8c42;
+            transform: scale(1.05);
+        }
+        .banner-logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #F5E7C8, #D4AF7A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .banner-sub {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+        .lottery-title {
+            color: #D4AF7A;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .lottery-numbers {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .number-ball {
+            background: linear-gradient(145deg, #2d3a4e, #1e293b);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #D4AF7A;
+            border: 2px solid #D4AF7A;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .banner-footer {
+            color: #5b6e8c;
+            font-size: 0.7rem;
+            margin-top: 20px;
+            border-top: 1px solid #2d3a4e;
+            padding-top: 15px;
+        }
+        @media (max-width: 550px) {
+            .banner-popup { padding: 30px 25px; }
+            .number-ball { width: 55px; height: 55px; font-size: 1.6rem; gap: 12px; }
+            .lottery-numbers { gap: 12px; }
+        }
+
         @media (max-width: 1200px) { .tabel-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 900px) { .tabel-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 550px) { .tabel-grid { grid-template-columns: 1fr; } body { padding: 12px; } }
@@ -357,13 +481,34 @@
             border-color: #e74c3c !important;
             background-color: #2a1a1a !important;
         }
+        .clickable {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+
+<!-- BANNER POPUP - Muncul pertama kali -->
+<div id="bannerOverlay" class="banner-overlay">
+    <div class="banner-popup">
+        <button class="close-banner" id="closeBannerBtn">✕</button>
+        <div class="banner-logo">PancerBet</div>
+        <div class="banner-sub">Auto Counting</div>
+        <div class="lottery-title">Lottery Prize</div>
+        <div class="lottery-numbers">
+            <div class="number-ball">6</div>
+            <div class="number-ball">9</div>
+            <div class="number-ball">6</div>
+            <div class="number-ball">9</div>
+        </div>
+        <div class="banner-footer">PancerBet | Official Partner</div>
+    </div>
+</div>
+
 <div class="container" id="mainContainer">
-    <div class="header">
-        <h1>👑 PANCER BET MEN <small>Complete Betting Dashboard</small></h1>
-        <p></p>
+    <div class="header" id="dashboardHeader">
+        <h1>🎲 3 PANCER BET MEN <small>Complete</small></h1>
+        <p>PENGINGAT PEPATAH CHINA " 你是狗 " </p>
     </div>
 
     <div class="stat-bar">
@@ -390,13 +535,13 @@
     <div class="ai-reason-area">
         <div class="ai-header">
             <h3>🤖 KIRIM AKUN PREMIUM AI MU = AUTO REPLY PENJELASAN BETTINGAN KALAH KE MEMBER </h3>
-            <div class="ai-badge">Auto Generated | Bahasa Formal & Sopan</div>
+            <div class="ai-badge">PEPATAH CINA PERNAH BERSABDA : 别看，笨蛋们</div>
         </div>
         <div class="ai-message" id="aiMessage">
             Silakan pilih jenis bet, isi data dengan benar, lalu klik HITUNG. AI akan memberikan penjelasan hasil kemenangan atau kekalahan secara profesional.
         </div>
     </div>
-    <footer>© PANCER BET MEN | Hadiah berupa perkalian (×) | Validasi digit ketat | Pop Up edukatif</footer>
+    <footer>© PancerBet Official | Hadiah berupa perkalian (×) | Validasi digit ketat | Pop Up edukatif</footer>
 </div>
 
 <div id="validationModal" class="modal-overlay">
@@ -411,6 +556,54 @@
 </div>
 
 <script>
+    // ========== BANNER POPUP (Muncul pertama kali) ==========
+    if (!sessionStorage.getItem('bannerClosed')) {
+        const bannerOverlay = document.getElementById('bannerOverlay');
+        if (bannerOverlay) {
+            bannerOverlay.classList.remove('hidden');
+        }
+    } else {
+        const bannerOverlay = document.getElementById('bannerOverlay');
+        if (bannerOverlay) {
+            bannerOverlay.classList.add('hidden');
+        }
+    }
+
+    const closeBannerBtn = document.getElementById('closeBannerBtn');
+    if (closeBannerBtn) {
+        closeBannerBtn.addEventListener('click', function() {
+            const bannerOverlay = document.getElementById('bannerOverlay');
+            bannerOverlay.classList.add('hidden');
+            sessionStorage.setItem('bannerClosed', 'true');
+        });
+    }
+
+    const bannerOverlayElem = document.getElementById('bannerOverlay');
+    if (bannerOverlayElem) {
+        bannerOverlayElem.addEventListener('click', function(e) {
+            if (e.target === bannerOverlayElem) {
+                bannerOverlayElem.classList.add('hidden');
+                sessionStorage.setItem('bannerClosed', 'true');
+            }
+        });
+    }
+    // ========================================================
+
+    // ================= REDIRECT HEADER =================
+    const REDIRECT_URL = 'https://www.hokidraw.com';
+    const headerElement = document.getElementById('dashboardHeader');
+    if (headerElement) {
+        headerElement.style.cursor = 'pointer';
+        headerElement.classList.add('clickable');
+        headerElement.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
+                return;
+            }
+            window.open(REDIRECT_URL, '_blank');
+        });
+    }
+    // =================================================
+
     // ================= DATA MASTER LENGKAP =================
     const diskonData = [
         { name: "DISKON 5D", digit: 5, diskon: 38, hadiahX: 50000, mode: "tepat", needResultLen: 5 },
@@ -461,7 +654,6 @@
         return a.split('').sort().join('') === b.split('').sort().join('');
     }
 
-    // Modal & Dashboard Close
     let pendingValidationCallback = null;
     const modal = document.getElementById('validationModal');
     const modalMessageDiv = document.getElementById('modalMessage');
@@ -541,7 +733,6 @@
         }
     }
 
-    // AI Reason Generator
     function generateAIReason(betName, detail, isWin, winAmount) {
         if (isWin) {
             return `Kepada member yang terhormat, berdasarkan hasil perhitungan pada taruhan ${betName}, dinyatakan MENANG. Detail: ${detail} Kemenangan yang diperoleh sebesar Rp ${winAmount.toLocaleString('id-ID')}. Selamat atas keberhasilan ini.`;
@@ -796,12 +987,10 @@
                 if (betObj.mode === "tepat" || betObj.mode === "bb" || betObj.mode === "colok_bebas" || betObj.mode === "colok_naga" || betObj.mode === "kombinasi") {
                     let angkaElem = document.getElementById(`angka_${uniq}`);
                     if (angkaElem) params.angkaBetting = angkaElem.value.trim();
-                    if (betObj.mode !== "kombinasi" && betObj.mode !== "colok_bebas" && betObj.mode !== "colok_naga") {
-                        if (!params.angkaBetting) {
-                            document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
-                            document.getElementById(`reason_${uniq}`).innerHTML = "Harap isi angka betting terlebih dahulu.";
-                            return;
-                        }
+                    if ((betObj.mode === "tepat" || betObj.mode === "bb") && !params.angkaBetting) {
+                        document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
+                        document.getElementById(`reason_${uniq}`).innerHTML = "Harap isi angka betting terlebih dahulu.";
+                        return;
                     }
                 }
                 if (betObj.mode === "colok_jitu") {
