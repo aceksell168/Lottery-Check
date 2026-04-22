@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Royal Togel Ultimate | Complete Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #0f0e17 0%, #1a1a2e 100%);
+            font-family: 'Poppins', 'Segoe UI', 'Inter', system-ui, sans-serif;
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 28px;
+            padding: 28px 32px;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255,215,150,0.25);
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,200,100,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #F5E7C8, #D4AF7A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .header h1 small {
+            font-size: 0.75rem;
+            background: rgba(212,175,122,0.2);
+            color: #D4AF7A;
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-weight: 400;
+        }
+        .header p {
+            color: #94a3b8;
+            margin-top: 8px;
+            font-size: 0.85rem;
+        }
+
+        .stat-bar {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-card {
+            background: rgba(30,41,59,0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 12px 24px;
+            border: 1px solid rgba(212,175,122,0.3);
+            flex: 1;
+        }
+        .stat-card span {
+            color: #cbd5e1;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        .stat-card .value {
+            color: #E2B87A;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 35px 0 18px 0;
+            padding-left: 18px;
+            border-left: 4px solid #D4AF7A;
+            color: #E8D5B5;
+            letter-spacing: -0.2px;
+        }
+
+        .tabel-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .bet-card {
+            background: linear-gradient(145deg, #1e293b, #16202e);
+            border-radius: 24px;
+            padding: 18px;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(212,175,122,0.2);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .bet-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212,175,122,0.5);
+        }
+
+        .bet-name {
+            font-weight: 700;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #D4AF7A, #B8925A);
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 40px;
+            margin-bottom: 14px;
+            color: #0f172a;
+        }
+
+        .info-line {
+            font-size: 0.7rem;
+            color: #9ca3af;
+            margin-bottom: 14px;
+            border-bottom: 1px dashed rgba(212,175,122,0.3);
+            padding-bottom: 10px;
+        }
+
+        .field {
+            margin-bottom: 12px;
+        }
+        .field label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #C9B38B;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .field input, .field select {
+            width: 100%;
+            padding: 8px 12px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            color: #F1E6D2;
+        }
+        .field input:focus, .field select:focus {
+            outline: none;
+            border-color: #D4AF7A;
+        }
+        .field input::placeholder {
+            color: #4a5a6e;
+        }
+
+        .total-bayar {
+            background: #0f172a;
+            padding: 8px 12px;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #D4AF7A;
+            margin: 10px 0;
+            text-align: center;
+            border: 1px solid #2d3a4e;
+        }
+
+        .kemenangan-box {
+            background: linear-gradient(145deg, #0f172a, #0a0f1c);
+            padding: 12px;
+            border-radius: 18px;
+            text-align: center;
+            margin-top: 12px;
+            border: 1px solid #2d3a4e;
+        }
+        .kemenangan-label {
+            font-size: 0.6rem;
+            color: #7e8aa2;
+        }
+        .kemenangan-value {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #F5C97B;
+        }
+
+        .btn-hitung {
+            background: linear-gradient(135deg, #D4AF7A, #B8925A);
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 40px;
+            font-weight: 700;
+            margin-top: 14px;
+            cursor: pointer;
+            color: #0f172a;
+            font-size: 0.8rem;
+        }
+        .btn-hitung:hover {
+            transform: scale(0.98);
+        }
+
+        .reason-small {
+            font-size: 0.65rem;
+            margin-top: 10px;
+            color: #94a3b8;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            padding: 6px;
+            border-radius: 12px;
+        }
+
+        .ai-reason-area {
+            background: linear-gradient(145deg, #1a2538, #111827);
+            border-radius: 28px;
+            padding: 20px 28px;
+            margin-top: 30px;
+            border: 1px solid rgba(212,175,122,0.4);
+        }
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #2d3e5a;
+            padding-bottom: 12px;
+        }
+        .ai-header h3 {
+            color: #D4AF7A;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .ai-badge {
+            background: #2a3a4e;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #D4AF7A;
+        }
+        .ai-message {
+            color: #E2E8F0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            background: rgba(0,0,0,0.3);
+            padding: 16px;
+            border-radius: 20px;
+            border-left: 3px solid #D4AF7A;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-pop {
+            background: #1e293b;
+            max-width: 450px;
+            width: 90%;
+            border-radius: 32px;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+            border: 1px solid #D4AF7A;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-header {
+            background: #D4AF7A;
+            padding: 18px 20px;
+            color: #0f172a;
+        }
+        .modal-header h3 {
+            font-size: 1.3rem;
+        }
+        .modal-body {
+            padding: 24px 20px;
+            color: #E2E8F0;
+            line-height: 1.5;
+        }
+        .modal-body .format-example {
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 16px;
+            font-family: monospace;
+            margin: 12px 0;
+            border: 1px solid #D4AF7A;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            padding: 10px 20px 24px;
+        }
+        .modal-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .btn-ngerti {
+            background: #2d6a4f;
+            color: white;
+        }
+        .btn-ga-ngerti {
+            background: #9e2a2a;
+            color: white;
+        }
+
+        @media (max-width: 1200px) { .tabel-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) { .tabel-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 550px) { .tabel-grid { grid-template-columns: 1fr; } body { padding: 12px; } }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.7rem;
+            color: #5b6e8c;
+            padding: 16px;
+        }
+        .error-highlight {
+            border-color: #e74c3c !important;
+            background-color: #2a1a1a !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="mainContainer">
+    <div class="header">
+        <h1>👑 ROYAL TOGEL ULTIMATE <small>Complete Betting Dashboard</small></h1>
+        <p>Semua jenis bet | Validasi ketat + Pop Up edukasi | AI formal reason | Total bayar diskon</p>
+    </div>
+
+    <div class="stat-bar">
+        <div class="stat-card"><span>📋 TOTAL JENIS BET</span><div class="value">30+ varian</div></div>
+        <div class="stat-card"><span>🎯 VALIDASI DIGIT</span><div class="value">Pop Up interaktif</div></div>
+        <div class="stat-card"><span>🤖 AI ASSISTANT</span><div class="value">Sopan & Formal</div></div>
+    </div>
+
+    <div class="section-title">📉 DISKON (Potongan + Hadiah ×)</div>
+    <div class="tabel-grid" id="diskonGrid"></div>
+
+    <div class="section-title">🔥 BET FULL (Tanpa Diskon)</div>
+    <div class="tabel-grid" id="fullGrid"></div>
+
+    <div class="section-title">🎯 TEPAT & BB (Bolak-Balik)</div>
+    <div class="tabel-grid" id="tepatBBGrid"></div>
+
+    <div class="section-title">🎯 COLOK BEBAS & COLOK NAGA</div>
+    <div class="tabel-grid" id="colokGrid"></div>
+
+    <div class="section-title">🎲 COLOK JITU | TENGAH TEPI | DASAR | 50-50 | SHIO | KOMBINASI</div>
+    <div class="tabel-grid" id="specialGrid"></div>
+
+    <div class="ai-reason-area">
+        <div class="ai-header">
+            <h3>🤖 AI ASSISTANT - PENYAMPAIAN KEPADA MEMBER</h3>
+            <div class="ai-badge">Auto Generated | Bahasa Formal & Sopan</div>
+        </div>
+        <div class="ai-message" id="aiMessage">
+            Silakan pilih jenis bet, isi data dengan benar, lalu klik HITUNG. AI akan memberikan penjelasan hasil kemenangan atau kekalahan secara profesional.
+        </div>
+    </div>
+    <footer>© Royal Togel Ultimate | Hadiah berupa perkalian (×) | Validasi digit ketat | Pop Up edukatif</footer>
+</div>
+
+<div id="validationModal" class="modal-overlay">
+    <div class="modal-pop">
+        <div class="modal-header"><h3>⚠️ PERHATIAN VALIDASI</h3></div>
+        <div class="modal-body" id="modalMessage"></div>
+        <div class="modal-buttons">
+            <button class="btn-ngerti" id="btnNgerti">✅ Ngerti Men, Lanjutkan</button>
+            <button class="btn-ga-ngerti" id="btnGaNgerti">❌ Ga Ngerti Men</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ================= DATA MASTER LENGKAP =================
+    const diskonData = [
+        { name: "DISKON 5D", digit: 5, diskon: 38, hadiahX: 50000, mode: "tepat", needResultLen: 5 },
+        { name: "DISKON 4D", digit: 4, diskon: 20, hadiahX: 7000, mode: "tepat", needResultLen: 4 },
+        { name: "DISKON 3D", digit: 3, diskon: 20, hadiahX: 750, mode: "tepat", needResultLen: 3 },
+        { name: "DISKON 2D", digit: 2, diskon: 20, hadiahX: 75, mode: "tepat", needResultLen: 2 }
+    ];
+    const fullData = [
+        { name: "BET FULL 5D", digit: 5, diskon: 0, hadiahX: 88000, mode: "tepat", needResultLen: 5 },
+        { name: "BET FULL 4D", digit: 4, diskon: 0, hadiahX: 10000, mode: "tepat", needResultLen: 4 },
+        { name: "BET FULL 3D", digit: 3, diskon: 0, hadiahX: 1000, mode: "tepat", needResultLen: 3 },
+        { name: "BET FULL 2D", digit: 2, diskon: 0, hadiahX: 100, mode: "tepat", needResultLen: 2 }
+    ];
+    const tepatBBData = [
+        { name: "5D TEPAT", digit: 5, diskon: 0, hadiahX: 50000, mode: "tepat", needResultLen: 5 },
+        { name: "5D BB", digit: 5, diskon: 0, hadiahX: 350, mode: "bb", needResultLen: 5 },
+        { name: "4D TEPAT", digit: 4, diskon: 0, hadiahX: 50000, mode: "tepat", needResultLen: 4 },
+        { name: "4D BB", digit: 4, diskon: 0, hadiahX: 180, mode: "bb", needResultLen: 4 },
+        { name: "3D TEPAT", digit: 3, diskon: 0, hadiahX: 500, mode: "tepat", needResultLen: 3 },
+        { name: "3D BB", digit: 3, diskon: 0, hadiahX: 75, mode: "bb", needResultLen: 3 },
+        { name: "2D TEPAT", digit: 2, diskon: 0, hadiahX: 80, mode: "tepat", needResultLen: 2 },
+        { name: "2D BB", digit: 2, diskon: 0, hadiahX: 15, mode: "bb", needResultLen: 2 }
+    ];
+    const colokData = [
+        { name: "COLOK BEBAS", diskon: 6, hadiahX: 0.9, mode: "colok_bebas", needResultLen: 4 },
+        { name: "COLOK BEBAS 2D(2)", diskon: 10, hadiahX: 4, mode: "colok_bebas", needResultLen: 4 },
+        { name: "COLOK BEBAS 2D(3)", diskon: 10, hadiahX: 6, mode: "colok_bebas", needResultLen: 4 },
+        { name: "COLOK BEBAS 2D(4)", diskon: 10, hadiahX: 20, mode: "colok_bebas", needResultLen: 4 },
+        { name: "COLOK BEBAS 2D(5)", diskon: 10, hadiahX: 200, mode: "colok_bebas", needResultLen: 4 },
+        { name: "COLOK BEBAS 4D(4)", diskon: 10, hadiahX: 50, mode: "colok_bebas", needResultLen: 4 },
+        { name: "COLOK BEBAS 4D(5)", diskon: 10, hadiahX: 200, mode: "colok_bebas", needResultLen: 4 },
+        { name: "COLOK NAGA(3)", digit: 3, diskon: 10, hadiahX: 12, mode: "colok_naga", needResultLen: 4 },
+        { name: "COLOK NAGA(4)", digit: 4, diskon: 10, hadiahX: 30, mode: "colok_naga", needResultLen: 4 },
+        { name: "COLOK NAGA(5)", digit: 5, diskon: 10, hadiahX: 125, mode: "colok_naga", needResultLen: 4 }
+    ];
+    const specialData = [
+        { name: "COLOK JITU", diskon: 6, hadiahX: 8, mode: "colok_jitu", needResultLen: 4 },
+        { name: "TENGAH TEPI", diskon: 2, kei: -2.2, mode: "tengah_tepi", needResultLen: 4 },
+        { name: "DASAR GENAP - KECIL", diskon: 2, kei: 10, mode: "dasar_genap_kecil", needResultLen: 4 },
+        { name: "DASAR GANJIL - BESAR", diskon: 2, kei: -25, mode: "dasar_ganjil_besar", needResultLen: 4 },
+        { name: "50 - 50", diskon: 2, kei: -2.2, mode: "ft50", needResultLen: 4 },
+        { name: "SHIO", diskon: 5, hadiahX: 9.5, mode: "shio", needResultLen: 4 },
+        { name: "KOMBINASI", diskon: 8, hadiahX: 2.7, mode: "kombinasi", needResultLen: 4 }
+    ];
+
+    function arePermutationsEqual(a, b) {
+        if (a.length !== b.length) return false;
+        return a.split('').sort().join('') === b.split('').sort().join('');
+    }
+
+    // Modal & Dashboard Close
+    let pendingValidationCallback = null;
+    const modal = document.getElementById('validationModal');
+    const modalMessageDiv = document.getElementById('modalMessage');
+
+    function closeDashboardPermanently() {
+        const mainContainer = document.getElementById('mainContainer');
+        const allGrids = document.querySelectorAll('.tabel-grid');
+        const allSections = document.querySelectorAll('.section-title');
+        const statBar = document.querySelector('.stat-bar');
+        const aiArea = document.querySelector('.ai-reason-area');
+        const footer = document.querySelector('footer');
+        
+        if (mainContainer) mainContainer.style.display = 'none';
+        if (statBar) statBar.style.display = 'none';
+        allGrids.forEach(grid => grid.style.display = 'none');
+        allSections.forEach(section => section.style.display = 'none');
+        if (aiArea) aiArea.style.display = 'none';
+        if (footer) footer.style.display = 'none';
+        
+        const closedMessage = document.createElement('div');
+        closedMessage.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #0f0e17 0%, #1a1a2e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 20px;
+        `;
+        closedMessage.innerHTML = `
+            <div style="background: #1e293b; border-radius: 32px; padding: 40px; max-width: 450px; border: 1px solid #D4AF7A;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
+                <h2 style="color: #D4AF7A; margin-bottom: 16px;">Akses Dashboard Ditutup</h2>
+                <p style="color: #E2E8F0; margin-bottom: 24px; line-height: 1.5;">
+                    Kami menutup akses dashboard karena member menyatakan tidak memahami aturan yang telah dijelaskan. 
+                    Silakan pelajari kembali format dan ketentuan permainan sebelum mengakses ulang.
+                </p>
+                <button onclick="location.reload()" style="background: #D4AF7A; border: none; padding: 12px 28px; border-radius: 40px; font-weight: 700; cursor: pointer; color: #0f172a;">
+                    🔄 Muat Ulang Halaman
+                </button>
+                <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 20px;">
+                    Dengan memuat ulang, Anda menyatakan telah memahami aturan.
+                </p>
+            </div>
+        `;
+        document.body.appendChild(closedMessage);
+    }
+
+    function showValidationModal(betName, expectedDigit, invalidInput, callback) {
+        modalMessageDiv.innerHTML = `
+            <p><strong>${betName}</strong> : Input RESULT tidak sesuai format.</p>
+            <p>Anda memasukkan: <strong>"${invalidInput}"</strong></p>
+            <div class="format-example">
+                ✅ Format yang benar: <strong>${expectedDigit} digit angka</strong><br>
+                Contoh: ${'0'.repeat(expectedDigit-1)}1 sampai ${'9'.repeat(expectedDigit)}
+            </div>
+            <p><strong>Apakah Dapat Dimengerti?</strong></p>
+        `;
+        pendingValidationCallback = callback;
+        modal.classList.add('active');
+    }
+
+    function closeModalAndContinue(understand, closeDashboard = false) {
+        modal.classList.remove('active');
+        if (pendingValidationCallback) {
+            pendingValidationCallback(understand);
+            pendingValidationCallback = null;
+        }
+        if (closeDashboard) {
+            closeDashboardPermanently();
+        }
+    }
+
+    // AI Reason Generator
+    function generateAIReason(betName, detail, isWin, winAmount) {
+        if (isWin) {
+            return `Kepada member yang terhormat, berdasarkan hasil perhitungan pada taruhan ${betName}, dinyatakan MENANG. Detail: ${detail} Kemenangan yang diperoleh sebesar Rp ${winAmount.toLocaleString('id-ID')}. Selamat atas keberhasilan ini.`;
+        } else {
+            return `Kepada member yang terhormat, berdasarkan hasil perhitungan pada taruhan ${betName}, dinyatakan TIDAK MENANG. Detail: ${detail} Kami mengharapkan keberuntungan dapat berpihak pada kesempatan berikutnya. Terima kasih telah bergabung.`;
+        }
+    }
+
+    function evaluateBetComplete(bet, params, nominal, resultRaw) {
+        let diskonPersen = bet.diskon || 0;
+        let nominalSetelahDiskon = nominal * (1 - diskonPersen/100);
+        let expectedLen = bet.needResultLen || (bet.digit || 4);
+        let cleanResult = resultRaw.toString().replace(/\D/g, '');
+        
+        if (cleanResult.length !== expectedLen) {
+            return { win: 0, reason: `Result harus ${expectedLen} digit.`, errorResult: true, expectedLen, invalidInput: resultRaw };
+        }
+        
+        let mode = bet.mode;
+        
+        if (mode === "tepat") {
+            let betNum = params.angkaBetting;
+            if (!betNum || betNum.length !== bet.digit) return { win: 0, reason: `Betting harus ${bet.digit} digit.` };
+            if (betNum === cleanResult) {
+                let prize = nominalSetelahDiskon * bet.hadiahX;
+                return { win: prize, reason: `Angka ${betNum} tepat sama dengan result ${cleanResult}.` };
+            } else {
+                return { win: 0, reason: `Angka ${betNum} tidak sama dengan result ${cleanResult}.` };
+            }
+        }
+        else if (mode === "bb") {
+            let betNum = params.angkaBetting;
+            if (!betNum || betNum.length !== bet.digit) return { win: 0, reason: `Betting BB harus ${bet.digit} digit.` };
+            if (arePermutationsEqual(betNum, cleanResult)) {
+                let prize = nominalSetelahDiskon * bet.hadiahX;
+                return { win: prize, reason: `Bolak-balik ${betNum} cocok dengan result ${cleanResult}.` };
+            } else {
+                return { win: 0, reason: `Permutasi ${betNum} tidak sama dengan ${cleanResult}.` };
+            }
+        }
+        else if (mode === "colok_bebas") {
+            let digitBet = params.angkaBetting;
+            if (!digitBet || digitBet.length !== 1) return { win: 0, reason: "Colok bebas harus 1 digit." };
+            let isWin = cleanResult.includes(digitBet);
+            if (isWin) {
+                let prize = nominalSetelahDiskon * bet.hadiahX;
+                return { win: prize, reason: `Angka ${digitBet} muncul di result ${cleanResult}. Hadiah ×${bet.hadiahX}.` };
+            } else {
+                return { win: 0, reason: `Angka ${digitBet} tidak muncul di result ${cleanResult}.` };
+            }
+        }
+        else if (mode === "colok_naga") {
+            let digitBet = params.angkaBetting;
+            let needCount = bet.digit;
+            if (!digitBet || digitBet.length !== needCount) return { win: 0, reason: `Colok naga butuh ${needCount} digit berbeda.` };
+            let semuaMuncul = digitBet.split('').every(ch => cleanResult.includes(ch));
+            if (semuaMuncul) {
+                let prize = nominalSetelahDiskon * bet.hadiahX;
+                return { win: prize, reason: `Semua angka ${digitBet} muncul di result ${cleanResult}.` };
+            } else {
+                return { win: 0, reason: `Tidak semua angka ${digitBet} muncul di result ${cleanResult}.` };
+            }
+        }
+        else if (mode === "colok_jitu") {
+            let { posisi, digit } = params;
+            let idx = posisi - 1;
+            if (idx < 0 || idx > 3) return { win: 0, reason: "Posisi harus 1-4." };
+            let isWin = (cleanResult[idx] === digit);
+            if (isWin) {
+                let prize = nominalSetelahDiskon * bet.hadiahX;
+                return { win: prize, reason: `Posisi ${posisi} result = ${digit}, cocok betting.` };
+            } else {
+                return { win: 0, reason: `Posisi ${posisi} result = ${cleanResult[idx]}, tidak sama dengan betting ${digit}.` };
+            }
+        }
+        else if (mode === "tengah_tepi") {
+            let pilihan = params.pilihan;
+            let last2 = parseInt(cleanResult.slice(-2));
+            let isTengah = (last2 >= 25 && last2 <= 74);
+            let isWin = (pilihan === "tengah" && isTengah) || (pilihan === "tepi" && !isTengah);
+            let kei = Math.abs(bet.kei);
+            if (isWin) {
+                let winAmount = nominal + (nominal * kei/100);
+                return { win: winAmount, reason: `Result 2D ${last2} termasuk ${isTengah ? "TENGAH" : "TEPI"}, sesuai pilihan ${pilihan}. Menang + kei.` };
+            } else {
+                return { win: 0, reason: `Result ${last2} adalah ${isTengah ? "TENGAH" : "TEPI"}, namun anda memilih ${pilihan}. Kalah.` };
+            }
+        }
+        else if (mode === "dasar_genap_kecil") {
+            let lastDigit = parseInt(cleanResult.slice(-1));
+            let isWin = (lastDigit % 2 === 0 && lastDigit <= 4);
+            if (isWin) {
+                let winAmount = nominal + (nominal * 10/100);
+                return { win: winAmount, reason: `Digit terakhir ${lastDigit} adalah GENAP dan KECIL. Menang + kei 10%.` };
+            } else {
+                return { win: 0, reason: `Digit ${lastDigit} tidak memenuhi GENAP & KECIL.` };
+            }
+        }
+        else if (mode === "dasar_ganjil_besar") {
+            let lastDigit = parseInt(cleanResult.slice(-1));
+            let isWin = (lastDigit % 2 !== 0 && lastDigit >= 5);
+            if (isWin) {
+                let winAmount = nominal + (nominal * 25/100);
+                return { win: winAmount, reason: `Digit ${lastDigit} adalah GANJIL dan BESAR. Menang +25%.` };
+            } else {
+                return { win: 0, reason: `Digit ${lastDigit} bukan GANJIL & BESAR.` };
+            }
+        }
+        else if (mode === "ft50") {
+            let pilihan = params.pilihan50;
+            let lastDigit = parseInt(cleanResult.slice(-1));
+            let isGanjil = lastDigit % 2 !== 0;
+            let isBesar = lastDigit >= 5;
+            let menang = false;
+            if (pilihan === "ganjil" && isGanjil) menang = true;
+            if (pilihan === "genap" && !isGanjil) menang = true;
+            if (pilihan === "besar" && isBesar) menang = true;
+            if (pilihan === "kecil" && !isBesar) menang = true;
+            if (menang) {
+                let winAmount = nominal + (nominal * 2.2/100);
+                return { win: winAmount, reason: `Taruhan 50-50 ${pilihan} menang. Digit ${lastDigit}.` };
+            } else {
+                return { win: 0, reason: `Taruhan ${pilihan} tidak cocok dengan digit ${lastDigit}.` };
+            }
+        }
+        else if (mode === "shio") {
+            let shioBet = params.shio;
+            let last2 = parseInt(cleanResult.slice(-2));
+            let shioResult = last2 % 12;
+            if (shioResult === 0) shioResult = 12;
+            let isWin = (shioBet === shioResult);
+            if (isWin) {
+                let prize = nominalSetelahDiskon * bet.hadiahX;
+                return { win: prize, reason: `Shio betting ${shioBet} cocok dengan shio result ${shioResult}.` };
+            } else {
+                return { win: 0, reason: `Shio result ${shioResult}, tidak sama dengan ${shioBet}.` };
+            }
+        }
+        else if (mode === "kombinasi") {
+            let betNum = params.angkaBetting;
+            if (!betNum || betNum.length !== 4) return { win: 0, reason: "Kombinasi harus 4 digit." };
+            let betSorted = betNum.split('').sort().join('');
+            let resSorted = cleanResult.split('').sort().join('');
+            let isWin = (betSorted === resSorted);
+            if (isWin) {
+                let prize = nominalSetelahDiskon * bet.hadiahX;
+                return { win: prize, reason: `Kombinasi digit ${betNum} sama dengan result ${cleanResult} setelah diacak.` };
+            } else {
+                return { win: 0, reason: `Kombinasi digit tidak cocok dengan result.` };
+            }
+        }
+        return { win: 0, reason: "Jenis bet belum terdefinisi." };
+    }
+
+    function renderUniversalGrid(containerId, betsArray) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        betsArray.forEach((bet, idx) => {
+            const uniqueId = `${containerId}_${idx}`;
+            const card = document.createElement('div');
+            card.className = 'bet-card';
+            
+            let extraFields = '';
+            let defaultResultLen = bet.needResultLen || (bet.digit || 4);
+            
+            if (bet.mode === "tepat" || bet.mode === "bb") {
+                extraFields = `<div class="field"><label>📌 Angka Betting (${bet.digit} digit)</label><input type="text" id="angka_${uniqueId}" placeholder="Contoh: ${'1'.repeat(bet.digit)}" value=""></div>`;
+            }
+            else if (bet.mode === "colok_bebas") {
+                extraFields = `<div class="field"><label>📌 Angka Betting (1 digit)</label><input type="text" id="angka_${uniqueId}" maxlength="1" placeholder="0-9" value=""></div>`;
+            }
+            else if (bet.mode === "colok_naga") {
+                extraFields = `<div class="field"><label>📌 Angka Betting (${bet.digit} digit berbeda)</label><input type="text" id="angka_${uniqueId}" placeholder="contoh: 123" value=""></div>`;
+            }
+            else if (bet.mode === "colok_jitu") {
+                extraFields = `<div class="field"><label>📍 Posisi (1-4)</label><input type="number" id="posisi_${uniqueId}" min="1" max="4" value="1"></div>
+                               <div class="field"><label>🔢 Digit (0-9)</label><input type="text" id="digit_${uniqueId}" maxlength="1" placeholder="0-9" value=""></div>`;
+            }
+            else if (bet.mode === "tengah_tepi") {
+                extraFields = `<div class="field"><label>⚖️ Pilihan</label><select id="pilihan_${uniqueId}"><option value="tengah">TENGAH (25-74)</option><option value="tepi">TEPI (00-24/75-99)</option></select></div>`;
+            }
+            else if (bet.mode === "ft50") {
+                extraFields = `<div class="field"><label>🎲 Pilihan 50-50</label><select id="pilihan_${uniqueId}"><option value="ganjil">GANJIL</option><option value="genap">GENAP</option><option value="besar">BESAR</option><option value="kecil">KECIL</option></select></div>`;
+            }
+            else if (bet.mode === "shio") {
+                extraFields = `<div class="field"><label>🐉 Shio (1-12)</label><input type="number" id="shio_${uniqueId}" min="1" max="12" value="1"></div>`;
+            }
+            else if (bet.mode === "kombinasi") {
+                extraFields = `<div class="field"><label>🔀 Angka Kombinasi (4 digit)</label><input type="text" id="angka_${uniqueId}" maxlength="4" placeholder="4 digit" value=""></div>`;
+            }
+            else if (bet.mode === "dasar_genap_kecil" || bet.mode === "dasar_ganjil_besar") {
+                extraFields = `<div class="field"><label>📌 Otomatis (digit terakhir result)</label><input type="text" disabled placeholder="Otomatis"></div>`;
+            }
+            
+            const hasDiskon = (bet.diskon > 0);
+            card.innerHTML = `
+                <div class="bet-name">${bet.name}</div>
+                <div class="info-line">🎁 Diskon ${bet.diskon}% | ${bet.hadiahX ? `Hadiah ×${bet.hadiahX}` : `Kei ${bet.kei}%`}</div>
+                <div class="field"><label>🎲 RESULT (${defaultResultLen} digit wajib)</label><input type="text" id="result_${uniqueId}" maxlength="${defaultResultLen}" placeholder="${defaultResultLen} digit (contoh: ${'1'.repeat(defaultResultLen)})" value=""></div>
+                ${extraFields}
+                <div class="field"><label>💰 Nominal Bet (Rp)</label><input type="number" id="nominal_${uniqueId}" step="1000" placeholder="contoh: 10000" value=""></div>
+                ${hasDiskon ? `<div class="total-bayar" id="totalBayar_${uniqueId}">💸 Total Dibayar setelah diskon: Rp 0</div>` : ''}
+                <div class="kemenangan-box"><div class="kemenangan-label">🏆 KEMENANGAN</div><div class="kemenangan-value" id="win_${uniqueId}">Rp 0</div></div>
+                <button class="btn-hitung" data-bet-json='${JSON.stringify(bet)}' data-unique="${uniqueId}">HITUNG</button>
+                <div class="reason-small" id="reason_${uniqueId}">Klik Hitung</div>
+            `;
+            container.appendChild(card);
+            
+            if (hasDiskon) {
+                const nominalInput = card.querySelector(`#nominal_${uniqueId}`);
+                const updateTotal = () => {
+                    let nominalVal = parseFloat(nominalInput.value) || 0;
+                    let setelah = nominalVal * (1 - bet.diskon/100);
+                    let totalDiv = document.getElementById(`totalBayar_${uniqueId}`);
+                    if (totalDiv) totalDiv.innerHTML = `💸 Total Dibayar setelah diskon: Rp ${setelah.toLocaleString('id-ID')}`;
+                };
+                nominalInput.addEventListener('input', updateTotal);
+            }
+            
+            const btn = card.querySelector('.btn-hitung');
+            btn.addEventListener('click', () => {
+                const betObj = JSON.parse(btn.getAttribute('data-bet-json'));
+                const uniq = btn.getAttribute('data-unique');
+                const resultInput = document.getElementById(`result_${uniq}`);
+                const resultRaw = resultInput.value.trim();
+                const nominalVal = parseFloat(document.getElementById(`nominal_${uniq}`).value);
+                const expectedLen = betObj.needResultLen || (betObj.digit || 4);
+                
+                if (isNaN(nominalVal) || nominalVal <= 0) {
+                    document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
+                    document.getElementById(`reason_${uniq}`).innerHTML = "Nominal harus lebih dari 0.";
+                    return;
+                }
+                
+                let cleanResult = resultRaw.replace(/\D/g, '');
+                if (cleanResult.length !== expectedLen) {
+                    showValidationModal(betObj.name, expectedLen, resultRaw, (understand) => {
+                        if (understand) {
+                            resultInput.classList.add('error-highlight');
+                            setTimeout(() => resultInput.classList.remove('error-highlight'), 800);
+                            document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
+                            document.getElementById(`reason_${uniq}`).innerHTML = `Silakan perbaiki RESULT menjadi ${expectedLen} digit.`;
+                        } else {
+                            document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
+                            document.getElementById(`reason_${uniq}`).innerHTML = `RESULT harus ${expectedLen} digit angka. Contoh: ${'1'.repeat(expectedLen)}. Mohon dipahami.`;
+                        }
+                    });
+                    return;
+                }
+                
+                let params = {};
+                if (betObj.mode === "tepat" || betObj.mode === "bb" || betObj.mode === "colok_bebas" || betObj.mode === "colok_naga" || betObj.mode === "kombinasi") {
+                    let angkaElem = document.getElementById(`angka_${uniq}`);
+                    if (angkaElem) params.angkaBetting = angkaElem.value.trim();
+                    if (betObj.mode !== "kombinasi" && betObj.mode !== "colok_bebas" && betObj.mode !== "colok_naga") {
+                        if (!params.angkaBetting) {
+                            document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
+                            document.getElementById(`reason_${uniq}`).innerHTML = "Harap isi angka betting terlebih dahulu.";
+                            return;
+                        }
+                    }
+                }
+                if (betObj.mode === "colok_jitu") {
+                    params.posisi = parseInt(document.getElementById(`posisi_${uniq}`).value);
+                    params.digit = document.getElementById(`digit_${uniq}`).value.trim();
+                    if (!params.digit) {
+                        document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
+                        document.getElementById(`reason_${uniq}`).innerHTML = "Harap isi digit terlebih dahulu.";
+                        return;
+                    }
+                }
+                if (betObj.mode === "tengah_tepi" || betObj.mode === "ft50") {
+                    params.pilihan = document.getElementById(`pilihan_${uniq}`).value;
+                    if (betObj.mode === "ft50") params.pilihan50 = params.pilihan;
+                }
+                if (betObj.mode === "shio") {
+                    params.shio = parseInt(document.getElementById(`shio_${uniq}`).value);
+                }
+                
+                const evalRes = evaluateBetComplete(betObj, params, nominalVal, cleanResult);
+                document.getElementById(`win_${uniq}`).innerHTML = `Rp ${evalRes.win.toLocaleString('id-ID', {minimumFractionDigits:0})}`;
+                document.getElementById(`reason_${uniq}`).innerHTML = evalRes.reason.substring(0, 120);
+                const aiMsg = generateAIReason(betObj.name, evalRes.reason, evalRes.win > 0, evalRes.win);
+                document.getElementById('aiMessage').innerHTML = aiMsg;
+            });
+        });
+    }
+    
+    document.getElementById('btnNgerti').addEventListener('click', () => {
+        closeModalAndContinue(true, false);
+    });
+    document.getElementById('btnGaNgerti').addEventListener('click', () => {
+        closeModalAndContinue(false, true);
+    });
+    
+    renderUniversalGrid('diskonGrid', diskonData);
+    renderUniversalGrid('fullGrid', fullData);
+    renderUniversalGrid('tepatBBGrid', tepatBBData);
+    renderUniversalGrid('colokGrid', colokData);
+    renderUniversalGrid('specialGrid', specialData);
+</script>
+</body>
+</html>
