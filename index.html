@@ -13,12 +13,14 @@
 
         body {
             background: linear-gradient(145deg, #0f0e17 0%, #1a1a2e 100%);
-            font-family: 'Poppins', 'Segoe UI', 'Inter', system-ui, sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Cabinet Grotesk', 'Inter', system-ui, sans-serif;
             padding: 24px;
             min-height: 100vh;
         }
 
-        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700;800&display=swap');
+        /* Import Font Unik & Modern */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.cdnfonts.com/css/cabinet-grotesk');
 
         .container {
             max-width: 1600px;
@@ -58,11 +60,12 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
+            font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif;
         }
         .header h1 small {
             font-size: 0.75rem;
@@ -70,12 +73,13 @@
             color: #D4AF7A;
             padding: 4px 14px;
             border-radius: 40px;
-            font-weight: 400;
+            font-weight: 500;
         }
         .header p {
             color: #94a3b8;
             margin-top: 8px;
             font-size: 0.85rem;
+            font-weight: 400;
         }
 
         .stat-bar {
@@ -96,21 +100,98 @@
             color: #cbd5e1;
             font-size: 0.7rem;
             text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
         .stat-card .value {
             color: #E2B87A;
             font-size: 1.2rem;
             font-weight: 700;
+            font-family: 'Cabinet Grotesk', monospace;
         }
 
+        .search-container {
+            background: rgba(30,41,59,0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 12px 24px;
+            border: 1px solid rgba(212,175,122,0.3);
+            flex: 2;
+        }
+        .search-container label {
+            color: #cbd5e1;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .search-container input {
+            width: 100%;
+            padding: 10px 16px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #F1E6D2;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 400;
+        }
+        .search-container input:focus {
+            outline: none;
+            border-color: #D4AF7A;
+        }
+        .search-container input::placeholder {
+            color: #4a5a6e;
+        }
+
+        .reset-btn-container {
+            background: rgba(30,41,59,0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 12px 24px;
+            border: 1px solid rgba(212,175,122,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-reset-all {
+            background: linear-gradient(135deg, #9e2a2a, #7a1f1f);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+        .btn-reset-all:hover {
+            transform: scale(0.98);
+            background: linear-gradient(135deg, #b83a3a, #8e2a2a);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 35px 0 18px 0;
+        }
         .section-title {
             font-size: 1.3rem;
             font-weight: 600;
-            margin: 35px 0 18px 0;
             padding-left: 18px;
             border-left: 4px solid #D4AF7A;
             color: #E8D5B5;
-            letter-spacing: -0.2px;
+            letter-spacing: -0.3px;
+            margin: 0;
+            font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif;
         }
 
         .tabel-grid {
@@ -132,16 +213,21 @@
             transform: translateY(-3px);
             border-color: rgba(212,175,122,0.5);
         }
+        .bet-card.hidden-bet {
+            display: none;
+        }
 
         .bet-name {
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             background: linear-gradient(135deg, #D4AF7A, #B8925A);
             display: inline-block;
             padding: 4px 14px;
             border-radius: 40px;
             margin-bottom: 14px;
             color: #0f172a;
+            font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.2px;
         }
 
         .info-line {
@@ -150,6 +236,7 @@
             margin-bottom: 14px;
             border-bottom: 1px dashed rgba(212,175,122,0.3);
             padding-bottom: 10px;
+            font-weight: 400;
         }
 
         .field {
@@ -161,6 +248,7 @@
             color: #C9B38B;
             display: block;
             margin-bottom: 4px;
+            letter-spacing: 0.3px;
         }
         .field input, .field select {
             width: 100%;
@@ -170,6 +258,8 @@
             border-radius: 16px;
             font-size: 0.85rem;
             color: #F1E6D2;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 400;
         }
         .field input:focus, .field select:focus {
             outline: none;
@@ -184,7 +274,7 @@
             padding: 8px 12px;
             border-radius: 16px;
             font-size: 0.7rem;
-            font-weight: 600;
+            font-weight: 500;
             color: #D4AF7A;
             margin: 10px 0;
             text-align: center;
@@ -202,11 +292,42 @@
         .kemenangan-label {
             font-size: 0.6rem;
             color: #7e8aa2;
+            letter-spacing: 1px;
         }
         .kemenangan-value {
             font-weight: 800;
             font-size: 1.1rem;
             color: #F5C97B;
+            font-family: 'Cabinet Grotesk', monospace;
+        }
+
+        .status-box {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .status-menang {
+            background: #2d6a4f;
+            color: #a7f3d0;
+        }
+        .status-kalah {
+            background: #9e2a2a;
+            color: #fecaca;
+        }
+        .message-to-member {
+            font-size: 0.65rem;
+            margin-top: 8px;
+            padding: 8px;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.4);
+            color: #cbd5e1;
+            text-align: center;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.4;
         }
 
         .btn-hitung {
@@ -220,56 +341,12 @@
             cursor: pointer;
             color: #0f172a;
             font-size: 0.8rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
         }
         .btn-hitung:hover {
             transform: scale(0.98);
-        }
-
-        .reason-small {
-            font-size: 0.65rem;
-            margin-top: 10px;
-            color: #94a3b8;
-            text-align: center;
-            background: rgba(0,0,0,0.3);
-            padding: 6px;
-            border-radius: 12px;
-        }
-
-        .ai-reason-area {
-            background: linear-gradient(145deg, #1a2538, #111827);
-            border-radius: 28px;
-            padding: 20px 28px;
-            margin-top: 30px;
-            border: 1px solid rgba(212,175,122,0.4);
-        }
-        .ai-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            border-bottom: 1px solid #2d3e5a;
-            padding-bottom: 12px;
-        }
-        .ai-header h3 {
-            color: #D4AF7A;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        .ai-badge {
-            background: #2a3a4e;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            color: #D4AF7A;
-        }
-        .ai-message {
-            color: #E2E8F0;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            background: rgba(0,0,0,0.3);
-            padding: 16px;
-            border-radius: 20px;
-            border-left: 3px solid #D4AF7A;
         }
 
         .modal-overlay {
@@ -312,11 +389,13 @@
         }
         .modal-header h3 {
             font-size: 1.3rem;
+            font-family: 'Cabinet Grotesk', sans-serif;
         }
         .modal-body {
             padding: 24px 20px;
             color: #E2E8F0;
             line-height: 1.5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .modal-body .format-example {
             background: #0f172a;
@@ -338,12 +417,83 @@
             border-radius: 60px;
             font-weight: 700;
             cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .btn-ngerti {
             background: #2d6a4f;
             color: white;
         }
         .btn-ga-ngerti {
+            background: #9e2a2a;
+            color: white;
+        }
+
+        /* Modal Konfirmasi Reset Global */
+        .modal-confirm-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s ease;
+        }
+        .modal-confirm-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-confirm {
+            background: #1e293b;
+            max-width: 400px;
+            width: 90%;
+            border-radius: 32px;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+            border: 1px solid #D4AF7A;
+            text-align: center;
+        }
+        .modal-confirm-header {
+            background: #D4AF7A;
+            padding: 20px;
+            color: #0f172a;
+        }
+        .modal-confirm-header h3 {
+            font-size: 1.5rem;
+            font-family: 'Cabinet Grotesk', sans-serif;
+        }
+        .modal-confirm-body {
+            padding: 30px 20px;
+            color: #E2E8F0;
+            font-size: 1.1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .modal-confirm-buttons {
+            display: flex;
+            gap: 15px;
+            padding: 10px 20px 24px;
+        }
+        .modal-confirm-buttons button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+        }
+        .btn-gaskeun {
+            background: #2d6a4f;
+            color: white;
+        }
+        .btn-kembali {
             background: #9e2a2a;
             color: white;
         }
@@ -364,7 +514,7 @@
             visibility: visible;
             opacity: 1;
             transition: visibility 0s, opacity 0.3s ease;
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
         .banner-overlay.hidden {
             visibility: hidden;
@@ -418,6 +568,7 @@
             color: transparent;
             margin-bottom: 10px;
             letter-spacing: 2px;
+            font-family: 'Cabinet Grotesk', sans-serif;
         }
         .banner-sub {
             color: #94a3b8;
@@ -453,6 +604,7 @@
             border: 2px solid #D4AF7A;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: transform 0.2s ease;
+            font-family: 'Cabinet Grotesk', monospace;
         }
         .banner-footer {
             color: #5b6e8c;
@@ -477,6 +629,8 @@
             font-size: 0.7rem;
             color: #5b6e8c;
             padding: 16px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 400;
         }
         .error-highlight {
             border-color: #e74c3c !important;
@@ -489,7 +643,7 @@
 </head>
 <body>
 
-<!-- BANNER POPUP - Muncul setiap refresh dengan angka random -->
+<!-- BANNER POPUP -->
 <div id="bannerOverlay" class="banner-overlay">
     <div class="banner-popup">
         <button class="close-banner" id="closeBannerBtn">✕</button>
@@ -513,38 +667,52 @@
     </div>
 
     <div class="stat-bar">
-        <div class="stat-card"><span>📋 TOTAL JENIS BET</span><div class="value">30+ varian</div></div>
-        <div class="stat-card"><span>🎯 VALIDASI DIGIT</span><div class="value">Pop Up interaktif</div></div>
-        <div class="stat-card"><span>🤖 AI ASSISTANT</span><div class="value">Sopan & Formal</div></div>
+        <div class="stat-card"><span>📋 TOTAL JENIS BET</span><div class="value" id="totalBetCount">0+ varian</div></div>
+        <div class="search-container">
+            <label>🔍 CARI JENIS BET</label>
+            <input type="text" id="searchBetInput" placeholder="Ketik nama bet... (contoh: DISKON, FULL, COLOK)">
+        </div>
+        <div class="reset-btn-container">
+            <button class="btn-reset-all" id="resetAllBtn">
+                🔄 RESET GLOBAL
+            </button>
+        </div>
     </div>
 
-    <div class="section-title">📉 DISKON (Potongan + Hadiah ×)</div>
+    <!-- DISKON -->
+    <div class="section-header">
+        <div class="section-title">📉 DISKON (Potongan + Hadiah ×)</div>
+    </div>
     <div class="tabel-grid" id="diskonGrid"></div>
 
-    <div class="section-title">🔥 BET FULL (Tanpa Diskon)</div>
+    <!-- BET FULL -->
+    <div class="section-header">
+        <div class="section-title">🔥 BET FULL (Tanpa Diskon)</div>
+    </div>
     <div class="tabel-grid" id="fullGrid"></div>
 
-    <div class="section-title">🎯 TEPAT & BB (Bolak-Balik)</div>
+    <!-- TEPAT & BB -->
+    <div class="section-header">
+        <div class="section-title">🎯 TEPAT & BB (Bolak-Balik)</div>
+    </div>
     <div class="tabel-grid" id="tepatBBGrid"></div>
 
-    <div class="section-title">🎯 COLOK BEBAS & COLOK NAGA</div>
+    <!-- COLOK BEBAS & NAGA -->
+    <div class="section-header">
+        <div class="section-title">🎯 COLOK BEBAS & COLOK NAGA</div>
+    </div>
     <div class="tabel-grid" id="colokGrid"></div>
 
-    <div class="section-title">🎲 COLOK JITU | TENGAH TEPI | DASAR | 50-50 | SHIO | KOMBINASI</div>
+    <!-- SPECIAL -->
+    <div class="section-header">
+        <div class="section-title">🎲 COLOK JITU | TENGAH TEPI | DASAR | 50-50 | SHIO | KOMBINASI</div>
+    </div>
     <div class="tabel-grid" id="specialGrid"></div>
 
-    <div class="ai-reason-area">
-        <div class="ai-header">
-            <h3>🤖 KIRIM AKUN PREMIUM AI MU = AUTO REPLY PENJELASAN BETTINGAN KALAH KE MEMBER </h3>
-            <div class="ai-badge">PEPATAH CINA PERNAH BERSABDA : 别看，笨蛋们</div>
-        </div>
-        <div class="ai-message" id="aiMessage">
-            Silakan pilih jenis bet, isi data dengan benar, lalu klik HITUNG. AI akan memberikan penjelasan hasil kemenangan atau kekalahan secara profesional.
-        </div>
-    </div>
     <footer>© PancerBet Official | Hadiah berupa perkalian (×) | Validasi digit ketat | Pop Up edukatif</footer>
 </div>
 
+<!-- Modal Validasi Biasa -->
 <div id="validationModal" class="modal-overlay">
     <div class="modal-pop">
         <div class="modal-header"><h3>⚠️ PERHATIAN VALIDASI</h3></div>
@@ -556,9 +724,25 @@
     </div>
 </div>
 
+<!-- Modal Konfirmasi Reset Global -->
+<div id="confirmModal" class="modal-confirm-overlay">
+    <div class="modal-confirm">
+        <div class="modal-confirm-header">
+            <h3>⚠️ PERINGATAN!</h3>
+        </div>
+        <div class="modal-confirm-body">
+            <p>Yakin Boy ?</p>
+            <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 8px;">Semua data akan direset!</p>
+        </div>
+        <div class="modal-confirm-buttons">
+            <button class="btn-gaskeun" id="btnGaskeun">✅ Iya, Gaskeun</button>
+            <button class="btn-kembali" id="btnKembali">❌ Tidak, Kembali Dulu</button>
+        </div>
+    </div>
+</div>
+
 <script>
-    // ========== BANNER POPUP (Muncul SETIAP REFRESH, Angka Random) ==========
-    // Fungsi untuk generate angka random 0-9
+    // ========== BANNER POPUP ==========
     function generateRandomNumbers() {
         const numbers = [];
         for (let i = 0; i < 4; i++) {
@@ -567,7 +751,6 @@
         return numbers;
     }
 
-    // Fungsi untuk update angka di banner dengan animasi
     function updateBannerNumbersWithAnimation() {
         const randomNumbers = generateRandomNumbers();
         const numberBalls = document.querySelectorAll('.number-ball');
@@ -585,15 +768,12 @@
         return randomNumbers;
     }
 
-    // Banner selalu muncul setiap refresh (tidak ada sessionStorage)
     const bannerOverlay = document.getElementById('bannerOverlay');
     if (bannerOverlay) {
         bannerOverlay.classList.remove('hidden');
-        // Update angka random setiap kali banner muncul
         updateBannerNumbersWithAnimation();
     }
 
-    // Event untuk tombol Close (X) - hanya menutup, tidak menyimpan state
     const closeBannerBtn = document.getElementById('closeBannerBtn');
     if (closeBannerBtn) {
         closeBannerBtn.addEventListener('click', function() {
@@ -604,7 +784,6 @@
         });
     }
 
-    // Klik di luar banner juga menutup
     const bannerOverlayElem = document.getElementById('bannerOverlay');
     if (bannerOverlayElem) {
         bannerOverlayElem.addEventListener('click', function(e) {
@@ -613,7 +792,6 @@
             }
         });
     }
-    // ========================================================
 
     // ================= REDIRECT HEADER =================
     const REDIRECT_URL = 'https://translate.google.com/?sl=zh-CN&tl=id&text=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E6%AC%A2%E8%BF%8E%E5%B0%8F%E7%8B%97&op=translate';
@@ -628,9 +806,59 @@
             window.open(REDIRECT_URL, '_blank');
         });
     }
-    // =================================================
 
-    // ================= DATA MASTER LENGKAP =================
+    // ================= FUNGSI RESET GLOBAL =================
+    function resetAllInputs() {
+        // Reset semua input result
+        const allResultInputs = document.querySelectorAll('input[id^="result_"]');
+        allResultInputs.forEach(input => {
+            input.value = '';
+            input.classList.remove('error-highlight');
+        });
+        
+        // Reset semua input angka betting
+        const allAngkaInputs = document.querySelectorAll('input[id^="angka_"]');
+        allAngkaInputs.forEach(input => input.value = '');
+        
+        // Reset semua input nominal
+        const allNominalInputs = document.querySelectorAll('input[id^="nominal_"]');
+        allNominalInputs.forEach(input => input.value = '');
+        
+        // Reset semua input digit untuk colok jitu
+        const allDigitInputs = document.querySelectorAll('input[id^="digit_"]');
+        allDigitInputs.forEach(input => input.value = '');
+        
+        // Reset semua select
+        const allSelects = document.querySelectorAll('select');
+        allSelects.forEach(select => select.selectedIndex = 0);
+        
+        // Reset semua posisi colok jitu ke 1
+        const allPosisiInputs = document.querySelectorAll('input[id^="posisi_"]');
+        allPosisiInputs.forEach(input => input.value = '1');
+        
+        // Reset semua shio ke 1
+        const allShioInputs = document.querySelectorAll('input[id^="shio_"]');
+        allShioInputs.forEach(input => input.value = '1');
+        
+        // Reset semua tampilan kemenangan dan status
+        const allWinSpans = document.querySelectorAll('[id^="win_"]');
+        allWinSpans.forEach(span => span.innerHTML = 'Rp 0');
+        
+        const allStatusDivs = document.querySelectorAll('[id^="status_"]');
+        allStatusDivs.forEach(div => {
+            div.innerHTML = '⚡ Belum dihitung';
+            div.className = 'status-box';
+        });
+        
+        const allMessageDivs = document.querySelectorAll('[id^="message_"]');
+        allMessageDivs.forEach(div => div.innerHTML = 'Klik HITUNG untuk melihat hasil');
+        
+        // Reset total bayar untuk diskon
+        const allTotalBayarDivs = document.querySelectorAll('[id^="totalBayar_"]');
+        allTotalBayarDivs.forEach(div => div.innerHTML = '💸 Total Dibayar setelah diskon: Rp 0');
+    }
+
+    // ================= DATA MASTER =================
     const diskonData = [
         { name: "DISKON 5D", digit: 5, diskon: 38, hadiahX: 50000, mode: "tepat", needResultLen: 5 },
         { name: "DISKON 4D", digit: 4, diskon: 20, hadiahX: 7000, mode: "tepat", needResultLen: 4 },
@@ -687,16 +915,14 @@
     function closeDashboardPermanently() {
         const mainContainer = document.getElementById('mainContainer');
         const allGrids = document.querySelectorAll('.tabel-grid');
-        const allSections = document.querySelectorAll('.section-title');
+        const allSections = document.querySelectorAll('.section-header');
         const statBar = document.querySelector('.stat-bar');
-        const aiArea = document.querySelector('.ai-reason-area');
         const footer = document.querySelector('footer');
         
         if (mainContainer) mainContainer.style.display = 'none';
         if (statBar) statBar.style.display = 'none';
         allGrids.forEach(grid => grid.style.display = 'none');
         allSections.forEach(section => section.style.display = 'none');
-        if (aiArea) aiArea.style.display = 'none';
         if (footer) footer.style.display = 'none';
         
         const closedMessage = document.createElement('div');
@@ -711,19 +937,19 @@
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             text-align: center;
             padding: 20px;
         `;
         closedMessage.innerHTML = `
             <div style="background: #1e293b; border-radius: 32px; padding: 40px; max-width: 450px; border: 1px solid #D4AF7A;">
                 <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
-                <h2 style="color: #D4AF7A; margin-bottom: 16px;">Akses Dashboard Ditutup</h2>
+                <h2 style="color: #D4AF7A; margin-bottom: 16px; font-family: 'Cabinet Grotesk', sans-serif;">Akses Dashboard Ditutup</h2>
                 <p style="color: #E2E8F0; margin-bottom: 24px; line-height: 1.5;">
                     Kami menutup akses dashboard karena member menyatakan tidak memahami aturan yang telah dijelaskan. 
                     Silakan pelajari kembali format dan ketentuan permainan sebelum mengakses ulang.
                 </p>
-                <button onclick="location.reload()" style="background: #D4AF7A; border: none; padding: 12px 28px; border-radius: 40px; font-weight: 700; cursor: pointer; color: #0f172a;">
+                <button onclick="location.reload()" style="background: #D4AF7A; border: none; padding: 12px 28px; border-radius: 40px; font-weight: 700; cursor: pointer; color: #0f172a; font-family: 'Plus Jakarta Sans', sans-serif;">
                     🔄 Muat Ulang Halaman
                 </button>
                 <p style="color: #94a3b8; font-size: 0.7rem; margin-top: 20px;">
@@ -759,12 +985,18 @@
         }
     }
 
-    function generateAIReason(betName, detail, isWin, winAmount) {
-        if (isWin) {
-            return `Kepada member yang terhormat, berdasarkan hasil perhitungan pada taruhan ${betName}, dinyatakan MENANG. Detail: ${detail} Kemenangan yang diperoleh sebesar Rp ${winAmount.toLocaleString('id-ID')}. Selamat atas keberhasilan ini.`;
-        } else {
-            return `Kepada member yang terhormat, berdasarkan hasil perhitungan pada taruhan ${betName}, dinyatakan TIDAK MENANG. Detail: ${detail} Kami mengharapkan keberuntungan dapat berpihak pada kesempatan berikutnya. Terima kasih telah bergabung.`;
-        }
+    function generateLossMessage(betName, detail, betNumber, resultNumber) {
+        const messages = [
+            `Kepada member Yth, untuk taruhan ${betName} dinyatakan TIDAK MENANG. ${detail} Mohon maaf atas kekalahan ini, semoga beruntung di kesempatan berikutnya.`,
+            `Dengan hormat, member belum berhasil pada taruhan ${betName}. ${detail} Kami doakan semoga hoki segera berpihak.`,
+            `Hasil perhitungan menunjukkan member KALAH pada bet ${betName}. ${detail} Jangan berkecil hati, tetap semangat!`,
+            `Mohon maaf, taruhan ${betName} dinyatakan gagal. ${detail} Silakan coba lagi dengan analisis yang lebih matang.`
+        ];
+        return messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    function generateWinMessage(betName, detail, winAmount) {
+        return `🎉 SELAMAT! Member dinyatakan MENANG pada taruhan ${betName}. ${detail} Kemenangan: Rp ${winAmount.toLocaleString('id-ID')}. Selamat!`;
     }
 
     function evaluateBetComplete(bet, params, nominal, resultRaw) {
@@ -913,6 +1145,37 @@
         return { win: 0, reason: "Jenis bet belum terdefinisi." };
     }
 
+    function updateTotalVisibleBets() {
+        const visibleCards = document.querySelectorAll('.bet-card:not(.hidden-bet)');
+        const totalCountElem = document.getElementById('totalBetCount');
+        if (totalCountElem) {
+            totalCountElem.innerText = visibleCards.length + ' varian';
+        }
+    }
+
+    function initSearchFeature() {
+        const searchInput = document.getElementById('searchBetInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                const allBetCards = document.querySelectorAll('.bet-card');
+                
+                allBetCards.forEach(card => {
+                    const betNameElem = card.querySelector('.bet-name');
+                    if (betNameElem) {
+                        const betName = betNameElem.innerText.toLowerCase();
+                        if (searchTerm === '' || betName.includes(searchTerm)) {
+                            card.classList.remove('hidden-bet');
+                        } else {
+                            card.classList.add('hidden-bet');
+                        }
+                    }
+                });
+                updateTotalVisibleBets();
+            });
+        }
+    }
+
     function renderUniversalGrid(containerId, betsArray) {
         const container = document.getElementById(containerId);
         container.innerHTML = '';
@@ -961,9 +1224,13 @@
                 ${extraFields}
                 <div class="field"><label>💰 Nominal Bet (Rp)</label><input type="number" id="nominal_${uniqueId}" step="1000" placeholder="contoh: 10000" value=""></div>
                 ${hasDiskon ? `<div class="total-bayar" id="totalBayar_${uniqueId}">💸 Total Dibayar setelah diskon: Rp 0</div>` : ''}
-                <div class="kemenangan-box"><div class="kemenangan-label">🏆 KEMENANGAN</div><div class="kemenangan-value" id="win_${uniqueId}">Rp 0</div></div>
+                <div class="kemenangan-box">
+                    <div class="kemenangan-label">🏆 KEMENANGAN</div>
+                    <div class="kemenangan-value" id="win_${uniqueId}">Rp 0</div>
+                </div>
+                <div class="status-box" id="status_${uniqueId}">⚡ Belum dihitung</div>
+                <div class="message-to-member" id="message_${uniqueId}">Klik HITUNG untuk melihat hasil</div>
                 <button class="btn-hitung" data-bet-json='${JSON.stringify(bet)}' data-unique="${uniqueId}">HITUNG</button>
-                <div class="reason-small" id="reason_${uniqueId}">Klik Hitung</div>
             `;
             container.appendChild(card);
             
@@ -986,10 +1253,15 @@
                 const resultRaw = resultInput.value.trim();
                 const nominalVal = parseFloat(document.getElementById(`nominal_${uniq}`).value);
                 const expectedLen = betObj.needResultLen || (betObj.digit || 4);
+                const winSpan = document.getElementById(`win_${uniq}`);
+                const statusSpan = document.getElementById(`status_${uniq}`);
+                const messageSpan = document.getElementById(`message_${uniq}`);
                 
                 if (isNaN(nominalVal) || nominalVal <= 0) {
-                    document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
-                    document.getElementById(`reason_${uniq}`).innerHTML = "Nominal harus lebih dari 0.";
+                    winSpan.innerHTML = "Rp 0";
+                    statusSpan.innerHTML = "❌ ERROR";
+                    statusSpan.className = "status-box status-kalah";
+                    messageSpan.innerHTML = "Nominal harus lebih dari 0. Mohon isi nominal taruhan.";
                     return;
                 }
                 
@@ -999,11 +1271,15 @@
                         if (understand) {
                             resultInput.classList.add('error-highlight');
                             setTimeout(() => resultInput.classList.remove('error-highlight'), 800);
-                            document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
-                            document.getElementById(`reason_${uniq}`).innerHTML = `Silakan perbaiki RESULT menjadi ${expectedLen} digit.`;
+                            winSpan.innerHTML = "Rp 0";
+                            statusSpan.innerHTML = "❌ VALIDASI GAGAL";
+                            statusSpan.className = "status-box status-kalah";
+                            messageSpan.innerHTML = `Silakan perbaiki RESULT menjadi ${expectedLen} digit.`;
                         } else {
-                            document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
-                            document.getElementById(`reason_${uniq}`).innerHTML = `RESULT harus ${expectedLen} digit angka. Contoh: ${'1'.repeat(expectedLen)}. Mohon dipahami.`;
+                            winSpan.innerHTML = "Rp 0";
+                            statusSpan.innerHTML = "❌ VALIDASI GAGAL";
+                            statusSpan.className = "status-box status-kalah";
+                            messageSpan.innerHTML = `RESULT harus ${expectedLen} digit angka. Contoh: ${'1'.repeat(expectedLen)}. Mohon dipahami.`;
                         }
                     });
                     return;
@@ -1014,8 +1290,10 @@
                     let angkaElem = document.getElementById(`angka_${uniq}`);
                     if (angkaElem) params.angkaBetting = angkaElem.value.trim();
                     if ((betObj.mode === "tepat" || betObj.mode === "bb") && !params.angkaBetting) {
-                        document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
-                        document.getElementById(`reason_${uniq}`).innerHTML = "Harap isi angka betting terlebih dahulu.";
+                        winSpan.innerHTML = "Rp 0";
+                        statusSpan.innerHTML = "❌ ERROR";
+                        statusSpan.className = "status-box status-kalah";
+                        messageSpan.innerHTML = "Harap isi angka betting terlebih dahulu.";
                         return;
                     }
                 }
@@ -1023,8 +1301,10 @@
                     params.posisi = parseInt(document.getElementById(`posisi_${uniq}`).value);
                     params.digit = document.getElementById(`digit_${uniq}`).value.trim();
                     if (!params.digit) {
-                        document.getElementById(`win_${uniq}`).innerHTML = "Rp 0";
-                        document.getElementById(`reason_${uniq}`).innerHTML = "Harap isi digit terlebih dahulu.";
+                        winSpan.innerHTML = "Rp 0";
+                        statusSpan.innerHTML = "❌ ERROR";
+                        statusSpan.className = "status-box status-kalah";
+                        messageSpan.innerHTML = "Harap isi digit terlebih dahulu.";
                         return;
                     }
                 }
@@ -1037,14 +1317,25 @@
                 }
                 
                 const evalRes = evaluateBetComplete(betObj, params, nominalVal, cleanResult);
-                document.getElementById(`win_${uniq}`).innerHTML = `Rp ${evalRes.win.toLocaleString('id-ID', {minimumFractionDigits:0})}`;
-                document.getElementById(`reason_${uniq}`).innerHTML = evalRes.reason.substring(0, 120);
-                const aiMsg = generateAIReason(betObj.name, evalRes.reason, evalRes.win > 0, evalRes.win);
-                document.getElementById('aiMessage').innerHTML = aiMsg;
+                const winAmount = evalRes.win;
+                
+                winSpan.innerHTML = `Rp ${winAmount.toLocaleString('id-ID', {minimumFractionDigits:0})}`;
+                
+                if (winAmount > 0) {
+                    statusSpan.innerHTML = "✅ MENANG";
+                    statusSpan.className = "status-box status-menang";
+                    messageSpan.innerHTML = generateWinMessage(betObj.name, evalRes.reason, winAmount);
+                } else {
+                    statusSpan.innerHTML = "❌ KALAH";
+                    statusSpan.className = "status-box status-kalah";
+                    let betNumber = params.angkaBetting || (params.digit || "-");
+                    messageSpan.innerHTML = generateLossMessage(betObj.name, evalRes.reason, betNumber, cleanResult);
+                }
             });
         });
     }
     
+    // ================= EVENT LISTENER =================
     document.getElementById('btnNgerti').addEventListener('click', () => {
         closeModalAndContinue(true, false);
     });
@@ -1052,11 +1343,51 @@
         closeModalAndContinue(false, true);
     });
     
+    // Reset Global dengan PopUp Konfirmasi
+    const resetAllBtn = document.getElementById('resetAllBtn');
+    const confirmModal = document.getElementById('confirmModal');
+    const btnGaskeun = document.getElementById('btnGaskeun');
+    const btnKembali = document.getElementById('btnKembali');
+    
+    if (resetAllBtn) {
+        resetAllBtn.addEventListener('click', () => {
+            confirmModal.classList.add('active');
+        });
+    }
+    
+    if (btnGaskeun) {
+        btnGaskeun.addEventListener('click', () => {
+            resetAllInputs();
+            confirmModal.classList.remove('active');
+            resetAllBtn.innerHTML = '✅ SEMUA TERESET!';
+            setTimeout(() => {
+                resetAllBtn.innerHTML = '🔄 RESET GLOBAL';
+            }, 2000);
+        });
+    }
+    
+    if (btnKembali) {
+        btnKembali.addEventListener('click', () => {
+            confirmModal.classList.remove('active');
+        });
+    }
+    
+    confirmModal.addEventListener('click', function(e) {
+        if (e.target === confirmModal) {
+            confirmModal.classList.remove('active');
+        }
+    });
+    
     renderUniversalGrid('diskonGrid', diskonData);
     renderUniversalGrid('fullGrid', fullData);
     renderUniversalGrid('tepatBBGrid', tepatBBData);
     renderUniversalGrid('colokGrid', colokData);
     renderUniversalGrid('specialGrid', specialData);
+    
+    setTimeout(() => {
+        initSearchFeature();
+        updateTotalVisibleBets();
+    }, 100);
 </script>
 </body>
 </html>
